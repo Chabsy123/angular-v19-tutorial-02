@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 // import { UserComponent } from './user/user.component';
 // import { DataBindingComponent } from './data-binding/data-binding.component';
 import { DirectivesComponent } from './directives/directives.component';
+import { StructuralDirectivesNgifVsIfComponent } from './structural-directives-ngif-vs-if/structural-directives-ngif-vs-if.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { DirectivesComponent } from './directives/directives.component';
     RouterOutlet,
     // UserComponent,
     // DataBindingComponent,
-    DirectivesComponent
+    DirectivesComponent,
+    StructuralDirectivesNgifVsIfComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
