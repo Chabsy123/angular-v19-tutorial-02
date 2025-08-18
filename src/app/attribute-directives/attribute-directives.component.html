@@ -1,0 +1,59 @@
+<!-- Header Section -->
+<div class="row text-center">
+    <div class="col-12 m-3">
+        <h1><u> Examples of Attribute Directive - ngClass </u></h1>
+    </div>
+</div>
+
+<!-- Three Examples Demonstrating Different ngClass Approaches -->
+<div class="row text-center pt-3">
+
+    <!-- Example 1: Dynamic Class Binding via Method -->
+    <div class="col-4">
+        <!--
+        [ngClass] binds to a component property (textColor)
+        that changes when buttons are clicked
+        -->
+        <h3 [ngClass]="textColor">This is the first example of ngClass</h3>
+        <br>
+        <!--
+        Buttons trigger changeColor() method with different CSS classes
+        'text-success' and 'text-danger' are Bootstrap text color classes
+        -->
+        <button class="btn btn-success m-2" (click)="changeColor('text-success')">Change to Green</button>
+        <button class="btn btn-danger m-2" (click)="changeColor('text-danger')">Change to Red</button>
+    </div>
+
+    <!-- Example 2: Conditional Class Binding -->
+    <div class="col-4">
+        <!--
+        Uses ternary operator to switch between two classes
+        based on isTextGreen boolean value
+        -->
+        <h3 [ngClass]="isTextGreen ? 'text-success' : 'text-danger'">This is the Second example of ngClass</h3>
+        <br>
+        <!--
+        Displays current value of isTextGreen (true/false)
+        Checkbox two-way bound to isTextGreen using [(ngModel)]
+        -->
+        {{isTextGreen}}
+        <input type="checkbox" [(ngModel)]="isTextGreen"> Change Color
+    </div>
+
+    <!-- Example 3: User-Defined Class Binding -->
+    <div class="col-4">
+        <!--
+        Binds to userClass property that user can modify via input
+        User can type any valid class (e.g., 'text-warning', 'font-weight-bold')
+        -->
+        <h3 [ngClass]="userClass">This is the third example of ngClass</h3>
+        <br>
+        <!--
+        Text input two-way bound to userClass property
+        User can experiment with different class values
+        -->
+        <input type="text" [(ngModel)]="userClass" placeholder="Ex : text-success">
+    </div>
+</div>
+
+

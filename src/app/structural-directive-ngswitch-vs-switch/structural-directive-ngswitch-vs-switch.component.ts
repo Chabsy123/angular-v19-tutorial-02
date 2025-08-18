@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-structural-directive-ngswitch-vs-switch',
-  imports: [NgSwitch, CommonModule],
+  imports: [ CommonModule],
   templateUrl: './structural-directive-ngswitch-vs-switch.component.html',
   styleUrl: './structural-directive-ngswitch-vs-switch.component.scss'
 })
