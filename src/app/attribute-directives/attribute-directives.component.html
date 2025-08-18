@@ -57,3 +57,61 @@
 </div>
 
 
+<!-- Header Section -->
+<div class="row text-center">
+    <div class="col-12 m-3">
+        <h1><u> Examples of Attribute Directive - ngStyle </u></h1>
+    </div>
+</div>
+
+<!-- Three Examples Demonstrating ngStyle -->
+<div class="row text-center pt-3">
+
+    <!-- Example 1: Dynamic Style Binding via Method -->
+    <div class="col-4">
+        <!--
+        [ngStyle] binds to an object literal with CSS properties:
+        - 'color' updates dynamically via styleColor
+        - 'font-weight' is hardcoded to 'lighter'
+        -->
+        <h3 [ngStyle]="{'color': styleColor, 'font-weight': 'lighter'}">
+            This is the first example of ngStyle
+        </h3>
+        <br>
+        <!--
+        Buttons trigger updateColor() to change text color:
+        - Passes color values directly (no CSS classes needed)
+        -->
+        <button class="btn btn-warning m-2" (click)="updateColor('orange')">Change to Orange</button>
+        <button class="btn btn-primary m-2" (click)="updateColor('blue')">Change to Blue</button>
+    </div>
+
+    <!-- Example 2: Conditional Style Binding -->
+    <div class="col-4">
+        <!--
+        Uses ternary operator to toggle between 'orange' and 'blue'
+        based on isTextOrange boolean flag
+        -->
+        <h3 [ngStyle]="{'color': isTextOrange ? 'orange' : 'blue'}">
+            This is the second example of ngStyle
+        </h3>
+        <br>
+        <!--
+        Checkbox toggles isTextOrange via two-way binding
+        No method needed - direct template logic
+        -->
+        <input type="checkbox" [(ngModel)]="isTextOrange"> Change Color
+    </div>
+
+    <!-- Example 3: Object-Based Style Binding -->
+    <div class="col-4">
+        <!--
+        Binds to a component property (customClass) that should be
+        a style object (e.g., {'color': 'red', 'font-size': '20px'})
+        Most flexible approach for complex styling
+        -->
+        <h3 [ngStyle]="customClass">
+            This is the third example of ngStyle
+        </h3>
+    </div>
+</div>
