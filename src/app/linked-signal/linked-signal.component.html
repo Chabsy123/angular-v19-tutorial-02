@@ -1,0 +1,14 @@
+<div>
+    <!--
+    Displays reactive total value using signal's getter syntax (total())
+    - Automatically updates when quantitySignal changes
+    - No need for async pipe or manual change detection
+    -->
+    <h2>Calculated total value => {{total()}}</h2>
+
+    <!--
+    Triggers calculate() to update quantitySignal
+    - Demonstrates that total() reacts to signal changes
+    -->
+    <button (click)="calculate()">Calculate Total</button>
+</div>
