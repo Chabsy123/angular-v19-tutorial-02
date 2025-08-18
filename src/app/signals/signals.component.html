@@ -1,0 +1,21 @@
+<div align="center">
+    <!--
+    Button triggers onIncrement() to update the signal
+    Note: No need for change detection markers like (changeDetectorRef)
+    -->
+    <button (click)="onIncrement()">Increment Counter</button>
+
+    <!--
+    Display signal value with counter()
+    - Parentheses () are REQUIRED to read signal values
+    - Automatically updates when signal changes (no async pipe needed)
+    -->
+    <p>Counter Value : {{counter()}}</p>
+
+    <!--
+    Commented alternative using traditional variable:
+    - Requires manual change detection (if changed outside Angular's zone)
+    - Uncomment to compare behavior
+    -->
+    <!-- <p>Counter Value : {{normalCounter}}</p> -->
+</div>
