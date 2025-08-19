@@ -8,12 +8,15 @@
       - data-bs-target: Points to the collapsible content
       - aria-* attributes: Accessibility improvements
     -->
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <!-- Default Bootstrap toggler icon -->
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,19 +25,25 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Main navigation links (left-aligned) -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
         <!--
           Navigation item with Angular routerLink
           - routerLinkActive: Adds 'active' class when route matches
           - routerLink: Simple static route path
         -->
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/user">User</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="/user"
+            >User</a
+          >
         </li>
 
         <!-- Another navigation item with static route -->
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/data-binding">Data-Binding</a>
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/data-binding"
+            >Data-Binding</a
+          >
         </li>
 
         <!--
@@ -42,8 +51,12 @@
           - [routerLink]: Alternate syntax that accepts string route
         -->
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active"
-          [routerLink]="'structural-directive'">Structural-Directive</a>
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLink]="'structural-directive'"
+            >Structural-Directive</a
+          >
         </li>
 
         <!--
@@ -52,17 +65,33 @@
           - This example passes multiple route segments/parameters
         -->
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['attribute-directives', 2, 'abc']">Attribute-Directive</a>
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLink]="['attribute-directives', 2, 'abc']"
+            >Attribute-Directive</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLink]="['built-in-pipes']"
+            >Built-in-Pipes</a
+          >
         </li>
       </ul>
 
       <!-- Search form (right-aligned) -->
       <form class="d-flex" role="search">
         <!-- Search input field -->
-        <input class="form-control me-2"
-               type="search"
-               placeholder="Search"
-               aria-label="Search"/>
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
         <!-- Search submit button -->
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
@@ -77,12 +106,11 @@
 -->
 <!-- <router-outlet></router-outlet> -->
 
-
 <!-- <app-directives></app-directives> -->
- <!-- <app-structural-directives-ngif-vs-if></app-structural-directives-ngif-vs-if> -->
+<!-- <app-structural-directives-ngif-vs-if></app-structural-directives-ngif-vs-if> -->
 <!-- <app-structural-directive-ngfor-vs-for></app-structural-directive-ngfor-vs-for> -->
 <!-- <app-structural-directive-ngswitch-vs-switch></app-structural-directive-ngswitch-vs-switch> -->
 <!-- <app-attribute-directives></app-attribute-directives> -->
 <!-- <app-signals></app-signals> -->
 <app-linked-signal></app-linked-signal>
-<router-outlet/>
+<router-outlet />
