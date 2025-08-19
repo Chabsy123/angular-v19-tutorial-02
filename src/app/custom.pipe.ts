@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'custom'
 })
 export class CustomPipe implements PipeTransform {
-
+// mobileNumber : any = null;
   private DatePipe = new DatePipe('en-US');
 
   transform(value: any, ...args: any[]): any {
