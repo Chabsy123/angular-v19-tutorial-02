@@ -14,6 +14,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-root',
   imports: [
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
     // UserComponent,
     // DataBindingComponent,
     // DirectivesComponent,

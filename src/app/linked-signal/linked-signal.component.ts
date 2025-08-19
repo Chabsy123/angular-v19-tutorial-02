@@ -16,10 +16,10 @@ export class LinkedSignalComponent {
   // Option 1: Standard computed signal (commented out)
   // total = computed(() => this.quantitySignal() * this.price);
 
-  // Option 2: Custom linkedSignal with simplified syntax (commented out)
+  // Option 2: Custom linkedSignal with shorthand syntax (commented out)
   // total = linkedSignal(() => this.quantitySignal() * this.price);
 
-  // Option 3: Custom linkedSignal with explicit configuration
+  // Option 3: Custom linkedSignal with source and computation
   total = linkedSignal({
     source: this.quantitySignal,  // Source signal to watch
     computation: () => this.quantitySignal() * this.price,  // Derivation logic

@@ -7,7 +7,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 export const routes: Routes = [
     // {path : '', component : UserComponent},
-    {path : '', redirectTo : 'user', pathMatch : 'full'},
+    { path: '', redirectTo: 'user', pathMatch: 'full' },
+// When the app loads at the root path (''),
+// automatically redirect to the 'user' route.
+// 'pathMatch: "full"' ensures the whole empty path ('')
+// is matched before redirecting, instead of partially matching.
+
     {path : 'user', component : UserComponent},
     {path : 'data-binding', component : DataBindingComponent},
     {path : 'structural-directive', component : StructuralDirectivesNgifVsIfComponent},
