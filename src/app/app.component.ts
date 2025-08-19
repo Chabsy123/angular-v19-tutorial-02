@@ -9,7 +9,7 @@ import { StructuralDirectiveNgswitchVsSwitchComponent } from './structural-direc
 import { AttributeDirectivesComponent } from './attribute-directives/attribute-directives.component';
 import { SignalsComponent } from './signals/signals.component';
 import { LinkedSignalComponent } from './linked-signal/linked-signal.component';
-
+import { RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-root',
   imports: [
@@ -20,8 +20,8 @@ import { LinkedSignalComponent } from './linked-signal/linked-signal.component';
     // StructuralDirectivesNgifVsIfComponent,
     // StructuralDirectiveNgforVsForComponent,
     // StructuralDirectiveNgswitchVsSwitchComponent,
-    AttributeDirectivesComponent,
-    SignalsComponent,
+    // AttributeDirectivesComponent,
+    // SignalsComponent,
     LinkedSignalComponent
   ],
   templateUrl: './app.component.html',

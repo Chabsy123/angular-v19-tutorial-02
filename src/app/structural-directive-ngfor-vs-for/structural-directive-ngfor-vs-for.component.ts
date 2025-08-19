@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 })
 
 export class StructuralDirectiveNgforVsForComponent {
+  // using an array
   employees : any[] = [
     {empName: "John", empNumber: "101", empEmail: "john@gmail.com", empDept: "IT"},
     {empName: "Bob", empNumber: "102", empEmail: "bob@gmail.com", empDept: "HR"},

@@ -1,3 +1,82 @@
+<!-- Bootstrap 5 navbar component with responsive collapse behavior -->
+<nav class="navbar navbar-expand-lg bg-body-secondary">
+  <!-- Container for proper spacing and alignment -->
+  <div class="container-fluid">
+    <!--
+      Navbar toggler button - appears on mobile screens
+      - data-bs-toggle: Enables collapse functionality
+      - data-bs-target: Points to the collapsible content
+      - aria-* attributes: Accessibility improvements
+    -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <!-- Default Bootstrap toggler icon -->
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible section of the navbar -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Main navigation links (left-aligned) -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!--
+          Navigation item with Angular routerLink
+          - routerLinkActive: Adds 'active' class when route matches
+          - routerLink: Simple static route path
+        -->
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/user">User</a>
+        </li>
+
+        <!-- Another navigation item with static route -->
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/data-binding">Data-Binding</a>
+        </li>
+
+        <!--
+          Navigation item with property binding syntax for routerLink
+          - [routerLink]: Alternate syntax that accepts string route
+        -->
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="'structural-directive'">Structural-Directive</a>
+        </li>
+
+        <!--
+          Navigation item with dynamic route parameters
+          - [routerLink] array syntax supports route parameters
+          - This example passes multiple route segments/parameters
+        -->
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['attribute-directives', 2, 'abc']">Attribute-Directive</a>
+        </li>
+      </ul>
+
+      <!-- Search form (right-aligned) -->
+      <form class="d-flex" role="search">
+        <!-- Search input field -->
+        <input class="form-control me-2"
+               type="search"
+               placeholder="Search"
+               aria-label="Search"/>
+        <!-- Search submit button -->
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!--
+  Angular router outlet - this is where routed components will be displayed
+  - The component matching the current route will be rendered here
+  - Acts as a placeholder for dynamic content
+-->
+<!-- <router-outlet></router-outlet> -->
+
+
 <!-- <app-directives></app-directives> -->
  <!-- <app-structural-directives-ngif-vs-if></app-structural-directives-ngif-vs-if> -->
 <!-- <app-structural-directive-ngfor-vs-for></app-structural-directive-ngfor-vs-for> -->

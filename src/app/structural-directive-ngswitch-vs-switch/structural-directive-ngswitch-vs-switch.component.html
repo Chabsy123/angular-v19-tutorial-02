@@ -1,33 +1,55 @@
+<!-- Main container for the switch comparison demo -->
 <div class="row text-center">
+    <!-- Header section -->
     <div class="col-12 m-3">
-        <h3>Example of *switch vs switch()</h3>
+        <h3>Example of *ngSwitch vs switch()</h3>
     </div>
 </div>
 
 <div class="row text-center">
+    <!-- Button controls to change the grade value -->
     <div class="col-12">
+        <!--
+          Each button triggers set() with a different grade number
+          Bootstrap classes used for styling (btn-success, btn-primary, etc.)
+        -->
         <button class="btn btn-success m-1" (click)="set(1)">1st Grade</button>
         <button class="btn btn-primary m-1" (click)="set(2)">2nd Grade</button>
         <button class="btn btn-warning m-1" (click)="set(3)">3rd Grade</button>
     </div>
+
+    <!-- Legacy *ngSwitch implementation -->
     <div [ngSwitch]="grade" class="m-3">
-        <div *ngSwitchCase="1">Congratulations on your outstanding achievement -First grade</div>
-        <div *ngSwitchCase="2">Congratulations on your achievement -Second grade</div>
-        <div *ngSwitchCase="3">Congratulations on your achievement -Third grade</div>
+
+          <!-- *ngSwitchCase - shows content when grade matches the value -->
+          <!-- *ngSwitchDefault - fallback when no cases match-->
+          <!-- Note the asterisk (*) syntax for structural directives -->
+
+        <!-- <div *ngSwitchCase="1">Congratulations on your outstanding achievement - First grade</div>
+        <div *ngSwitchCase="2">Congratulations on your achievement - Second grade</div>
+        <div *ngSwitchCase="3">Congratulations on your achievement - Third grade</div>
         <div *ngSwitchDefault>No result found..</div>
-    </div>
+    </div> -->
+
+    <!-- @switch implementation  -->
     <div class="m-3">
         @switch(grade) {
-            @case(1){
-                Congratulations on your outstanding achievement -First grade
+            <!--
+              @case - new syntax for switch cases
+              More readable template syntax
+              No asterisks needed
+              Automatically breaks after each case
+            -->
+            @case(1) {
+                Congratulations on your outstanding achievement - First grade
             }
-            @case(2){
-                Congratulations on your achievement -Second grade
+            @case(2) {
+                Congratulations on your achievement - Second grade
             }
-            @case(3){
-                Congratulations on your achievement -Third grade
+            @case(3) {
+                Congratulations on your achievement - Third grade
             }
-            @default{
+            @default {
                 No result found..
             }
         }

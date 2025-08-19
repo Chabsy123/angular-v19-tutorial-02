@@ -9,6 +9,7 @@
        <div>
         <input type="checkbox"  (click)="onClick()"> Terms and Conditions
        </div>
+       <!-- both clicks the checkbox to show the submit button when true and removes from the DOM when false-->
        <!-- <div *ngIf="isChecked">
         <button class="btn btn-success">Submit</button>
        </div> -->
@@ -33,6 +34,7 @@
             <input type="text" [(ngModel)]="input2">
         </div>
         <!-- <div *ngIf="input1 !== input2">
+          if the two inputs are not the same, this will show
             <h4>Both values are not equal</h4>
         </div>
          <div *ngIf="input1 === input2">

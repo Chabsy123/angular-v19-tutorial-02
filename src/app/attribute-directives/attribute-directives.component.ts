@@ -29,7 +29,7 @@ export class AttributeDirectivesComponent {
   userClass : string = '';
 
   customClass : any = {
-     'color':'yellow',
+    'color':'yellow',
     'height':'150px',
     'width':'400px',
     'border':'1px solid black'

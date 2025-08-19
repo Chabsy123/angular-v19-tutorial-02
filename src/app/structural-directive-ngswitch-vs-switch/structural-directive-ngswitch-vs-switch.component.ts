@@ -8,9 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './structural-directive-ngswitch-vs-switch.component.scss'
 })
 export class StructuralDirectiveNgswitchVsSwitchComponent {
+  //Current grade value (0 by default)
   grade: number = 0;
 
-  set(x : number) {
-    this.grade = x;
+  // Method to update the grade value
+  set(x: number) {
+    this.grade = x; // Updates the grade which triggers the switch statements
   }
 }
