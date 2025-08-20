@@ -1,39 +1,199 @@
 <div class="container">
-    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
-         <!-- <pre>valid : {{userForm.valid}}</pre>
-        <pre>Value : {{userForm.value | json}}</pre>
-        <pre>valid : {{userForm.valid}}</pre>
-        <pre>invalid : {{userForm.invalid}}</pre>
-        <pre>touched : {{userForm.touched}}</pre>
-        <pre>untouched : {{userForm.untouched}}</pre>
-        <pre>submitted : {{userForm.submitted}}</pre> -->
+  <!-- The form is using Angular's template-driven system -->
+  <!-- #userForm="ngForm" → creates a local variable "userForm" that represents the form -->
+  <!-- (ngSubmit)="onSubmit(userForm)" → calls onSubmit() in TS when the form is submitted -->
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" novalidate>
+    <h2 class="text-center m-2">User Information</h2>
 
-        <h2 class="text-center m-2">User Information</h2>
-        <!-- {{firstName}} -->
-        <div class="form-group m-2">
-            <label>First Name</label>
-            <input type="text" class="form-control" placeholder="Enter first name" name="firstName" [(ngModel)]="userObject.firstName" >
-        </div>
-        <!-- {{lastName}} -->
-        <div class="form-group m-2">
-            <label>Last Name</label>
-            <input type="text" class="form-control" placeholder="Enter last name" name="lastName" [(ngModel)]="userObject.lastName">
-        </div>
-        <div class="form-group m-2">
-            <label>Email</label>
-            <input type="email" class="form-control" placeholder="Enter email address"  name="email" [(ngModel)]="userObject.email">
-        </div>
-        <div class="form-group m-2">
-            <label>Password</label>
-            <input type="password" class="form-control" placeholder="Enter password" name="pass" [(ngModel)]="userObject.pass">
-        </div>
-        <div class="form-check m-2">
-            <input type="checkbox" class="form-check-input" name="isCheck" [(ngModel)]="userObject.lastName">
-            <label>Check me out</label>
-        </div>
-        <button class="btn btn-success m-2">Submit</button>
-         <button class="btn btn-warning m-2" (click)="setValues(userForm)">Set Value</button>
-         <button class="btn btn-primary m-2" (click)="patchValues(userForm)">Patch Value</button>
-         <button class="btn btn-danger m-2" (click)="resetValues(userForm)">Reset Value</button>
-    </form>
+    <!-- First Name input -->
+    <!-- {{firstName}} -->
+    <div class="form-group m-2">
+      <label>First Name</label>
+      <!-- Input field for first name -->
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter first name"
+        #fname="ngModel"
+        name="firstName"
+        [(ngModel)]="userObject.firstName"
+        minlength="5"
+        required
+      />
+      <!-- Bootstrap class for styling -->
+      <!-- Placeholder text inside the field -->
+      <!-- #fname is Template reference variable linked to ngModel directive -->
+      <!-- Required for ngModel binding in template-driven forms -->
+      <!-- Two-way data binding: updates both input & TS object -->
+      <!-- Validation: must have at least 5 characters -->
+      <!-- Validation: field cannot be left empty -->
+
+      <!-- Attributes explained:
+                 - type="text" → input accepts plain text
+                 - class="form-control" → Bootstrap styling
+                 - placeholder → shows hint text inside the box
+                 - name="firstName" → REQUIRED in template-driven forms for ngModel to work
+                 - [(ngModel)]="userObject.firstName" → two-way binds this field to TS object
+
+               Possible Errors:
+                 If name is missing → Angular will throw "If ngModel is used within a form tag, either the name attribute must be set..."
+                  If userObject.firstName doesn’t exist in TS → no binding will happen
+            -->
+      <!-- Show error messages if the input is dirty (modified) OR touched (blurred) -->
+@if ((fname?.dirty || fname?.touched)) {
+
+    <!-- If required validation fails (input left empty) -->
+    @if(fname?.errors?.['required']){
+        <small class="text-danger">First name is required</small>
+    }
+
+    <!-- If minlength validation fails (less than 5 characters) -->
+    @if(fname?.errors?.['minlength']){
+        <small class="text-danger">First name must be at least 5 characters</small>
+    }
+
+}
+
+    </div>
+    <!-- <pre>Value : {{fname.value}}</pre>
+        <pre>valid : {{fname.valid}}</pre>
+        <pre>invalid : {{fname.invalid}}</pre>
+        <pre>touched : {{fname.touched}}</pre> -->
+    <!-- {{lastName}} -->
+    <!-- Last Name input -->
+   <div class="form-group m-2">
+  <label>Last Name</label>
+
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Enter last name"
+    #lname="ngModel"
+    name="lastName"
+    [(ngModel)]="userObject.lastName"
+    pattern="^[a-zA-Z]+$"
+    maxlength="15"
+    required
+  />
+
+  <!-- type="text": plain text input -->
+  <!-- class="form-control": Bootstrap styling -->
+  <!-- placeholder: hint text shown before typing -->
+  <!-- #lname="ngModel": local ref to this control's ngModel (valid, invalid, touched, errors, etc.) -->
+  <!-- name="lastName": required for ngModel to register the control in a template-driven form -->
+  <!-- [(ngModel)]="userObject.lastName": two-way binding to the component property -->
+  <!-- pattern="^[a-zA-Z]+$": only letters allowed (no spaces, numbers, or symbols) -->
+  <!-- maxlength="15": limits input length to 15 characters (browser-level) -->
+  <!-- required: field must not be empty -->
+
+  @if ((lname?.dirty || lname?.touched)) {
+    @if (lname?.errors?.['required']) {
+      <small class="text-danger">Last name is required</small>
+    }
+    @if (lname?.errors?.['pattern']) {
+      <small class="text-danger">Last name does not match the pattern</small>
+    }
+  }
+
+  <!-- Validation block notes:
+       - Shown only after user interacts (dirty or touched) to avoid flashing errors on load
+       - lname.errors['required']: triggered when the field is empty
+       - lname.errors['pattern']: triggered when value contains anything other than A–Z or a–z
+       - You set maxlength=15 but no message is shown here; add one if you want explicit feedback -->
+
+    </div>
+
+    <!-- Email input -->
+    <div class="form-group m-2">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Enter email address"
+        #emailid="ngModel"
+        name="email"
+        [(ngModel)]="userObject.email"
+        email
+        required
+      />
+      <!-- Attributes explained:
+                 - type="email" → HTML5 input type, ensures valid email format
+                 - Angular will mark form invalid if entered value is NOT in email format
+
+               Possible Errors:
+                  If [(ngModel)] is missing → input won’t bind to TS userObject
+                  If userObject.email not defined in TS → data won’t appear in TS
+            -->
+      @if ((emailid?.dirty || fname?.touched)) {
+      @if(emailid?.errors?.['required']){
+      <small class="text-danger"
+        >Email
+        <address></address>
+        is required</small
+      >
+      } @if(emailid?.errors?.['email']){
+      <small class="text-danger">Please enter a valid email address</small>
+      } }
+    </div>
+
+    <!-- Password input -->
+    <div class="form-group m-2">
+      <label>Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Enter password"
+        name="pass"
+        [(ngModel)]="userObject.pass"
+      />
+      <!-- Attributes explained:
+                 - type="password" → masks input with dots (security)
+                 - name="pass" → must match form field
+
+               Possible Errors:
+                 If the TS object is missing "pass" property, binding fails silently
+            -->
+    </div>
+
+    <!-- Checkbox input -->
+    <div class="form-check m-2">
+      <!-- Fixed bug: bind to isCheck (boolean) instead of lastName (string) -->
+      <input
+        type="checkbox"
+        class="form-check-input"
+        name="isCheck"
+        [(ngModel)]="userObject.isCheck"
+      />
+      <label>Check me out</label>
+      <!-- Attributes explained:
+                 - type="checkbox" → returns true/false value
+                 - [(ngModel)]="userObject.isCheck" → must be boolean in TS
+
+               Possible Errors:
+                  If [(ngModel)] points to a string (like "lastName"), checkbox won’t behave correctly
+                  If name is missing, Angular will throw the same ngModel "name required" error
+            -->
+    </div>
+
+    <!-- Form buttons -->
+    <!-- These buttons call TS methods when clicked -->
+    <!-- <button class="btn btn-success m-2">Submit</button> -->
+    <!-- <button class="btn btn-success m-2" [disabled]="!userForm.valid">Submit</button> -->
+    <button class="btn btn-success m-2" [disabled]="userForm.invalid">
+      Submit
+    </button>
+
+    <!-- default type="submit" → triggers (ngSubmit) on form -->
+
+    <!-- <button class="btn btn-warning m-2" (click)="setValues(userForm)">Set Value</button> -->
+    <!-- setValues replaces the ENTIRE form values → will error if any control is missing -->
+
+    <button class="btn btn-primary m-2" (click)="patchValues(userForm)">
+      Patch Value
+    </button>
+    <!-- patchValues updates only provided fields → safe if some are missing -->
+
+    <!-- <button class="btn btn-danger m-2" (click)="resetValues(userForm)">Reset Value</button> -->
+    <!-- resetForm clears all fields and resets state -->
+  </form>
 </div>

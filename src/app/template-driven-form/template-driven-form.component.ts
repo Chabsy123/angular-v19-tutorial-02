@@ -5,21 +5,24 @@ import { User } from '../../user';
 
 @Component({
   selector: 'app-template-driven-form',
-  imports: [FormsModule, JsonPipe],
+  imports: [FormsModule],
   templateUrl: './template-driven-form.component.html',
   styleUrl: './template-driven-form.component.scss'
 })
 export class TemplateDrivenFormComponent implements OnInit {
-  // firstName: string = '';
-  // lastName: string = '';
-  userObject : User = {};
 
-  onSubmit(userForm:NgForm) {
-    // console.log(userForm);
+  // object that stores user input from the form (bound using [(ngModel)])
+  userObject: User = {};
+
+  // called when form is submitted
+  onSubmit(userForm: NgForm) {
+    // prints the full form data in the console
     console.log(userForm.value);
   }
 
+  // lifecycle hook: runs once when the component is initialized
   ngOnInit(): void {
+    // example of pre-populating values in the form
     // this.userObject = {
     //   firstName: 'John',
     //   lastName: 'Doe',
@@ -29,7 +32,8 @@ export class TemplateDrivenFormComponent implements OnInit {
     // };
   }
 
-  setValues(userForm:NgForm) {
+  // completely replaces all form values with the object
+  setValues(userForm: NgForm) {
     let obj = {
       firstName: 'John',
       lastName: 'Doe',
@@ -37,22 +41,22 @@ export class TemplateDrivenFormComponent implements OnInit {
       pass: '123456',
       isCheck: true
     }
-    userForm.setValue(obj);
+    userForm.setValue(obj); // requires ALL fields to be present
   }
 
-  patchValues(userForm:NgForm) {
+  // partially updates only some fields in the form
+  patchValues(userForm: NgForm) {
     let obj = {
       firstName: 'John',
       lastName: 'Doe',
       email: 'john@example.com',
-      // pass: '123456',
-      // isCheck: true
+      // pass and isCheck left out → they won’t change
     }
     userForm.control.patchValue(obj);
   }
 
-  resetValues(userForm:NgForm) {
-    // userForm.reset();
+  // resets the form back to empty (or default values)
+  resetValues(userForm: NgForm) {
     userForm.resetForm();
   }
 }
