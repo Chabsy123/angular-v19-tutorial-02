@@ -1,52 +1,220 @@
 <div class="container">
-    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+  <!-- The form tag is bound to the TS FormGroup instance named 'reactiveForm'.
+       [formGroup] wires template controls to the form model.
+       (ngSubmit) calls onSubmit() only when the form is submitted and valid (unless you handle otherwise). -->
+  <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center m-2">Reactive Form : User Information</h2>
 
-        <h2 class="text-center m-2">Reactive Form : User Information</h2>
-        <!-- {{firstName}} -->
-        <div class="form-group m-2">
-            <label>First Name</label>
-            <input type="text" class="form-control" placeholder="Enter first name" formControlName="firstName" required>
+    <!-- FIRST NAME -->
+    <!-- {{firstName}} -->
+    <div class="form-group m-2">
+      <label>First Name</label>
+
+      <!-- formControlName links this input to reactiveForm.controls['firstname'] defined in TS.
+           type="text": plain text input.
+           class="form-control": Bootstrap styling (optional).
+           placeholder: hint text only. -->
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter first name"
+        formControlName="firstname"
+      />
+      <!-- RELATION: This binds to TS: firstname: ['', [Validators.required, Validators.pattern("^[a-zA-Z]+$")]] -->
+
+      <!-- ABOUT STATES USED BELOW:
+           - .dirty   => true after the user changes the value at least once.
+           - .touched => true after the input loses focus (blur).
+           - .errors  => an object containing validation failures (e.g., { required: true }).
+           We typically show errors only after user has interacted: (dirty || touched). -->
+
+      <!-- Show FIRSTNAME errors only after interaction (dirty or touched) -->
+      @if((reactiveForm.controls['firstname'].dirty ||
+      reactiveForm.controls['firstname'].touched)){
+      <!-- .errors?.['required'] means the required validator failed -->
+      @if(reactiveForm.controls['firstname'].errors?.['required']){
+      <small class="text-danger">Firstname is required.</small>
+      }
+      <!-- .errors?.['pattern'] means the Regex validator failed (only letters allowed) -->
+      @if(reactiveForm.controls['firstname'].errors?.['pattern']){
+      <small class="text-danger"
+        >Firstname does not match the required pattern (letters only).</small
+      >
+      } }
+    </div>
+
+    <!-- LAST NAME-->
+    <!-- {{lastName}} -->
+    <div class="form-group m-2">
+      <label>Last Name</label>
+
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter last name"
+        formControlName="lastname"
+      />
+      <!-- RELATION: TS control is lastname: ['', [Validators.required, Validators.minLength(10)]] -->
+
+      <!-- Show LASTNAME errors after user interacts (dirty or touched) -->
+      @if((reactiveForm.controls['lastname'].dirty ||
+      reactiveForm.controls['lastname'].touched)){
+      <!-- required validator failed -->
+      @if(reactiveForm.controls['lastname'].errors?.['required']){
+      <small class="text-danger">Lastname is required.</small>
+      }
+      <!-- minlength validator failed; .errors.minlength has { requiredLength, actualLength } -->
+      @if(reactiveForm.controls['lastname'].errors?.['minlength']){
+      <small class="text-danger">
+        The minimum length of the lastname should be 10.
+      </small>
+      } }
+    </div>
+
+    <!--
+         EMAIL -->
+    <div class="form-group m-2">
+      <label>Email</label>
+
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Enter email address"
+        formControlName="email"
+      />
+      <!-- RELATION: TS control is email: ['', [Validators.required, Validators.maxLength(15), Validators.email]] -->
+
+      <!-- Show EMAIL errors after interaction -->
+      @if((reactiveForm.controls['email'].dirty ||
+      reactiveForm.controls['email'].touched)){
+      <!-- required failed -->
+      @if(reactiveForm.controls['email'].errors?.['required']){
+      <small class="text-danger">Email is required.</small>
+      }
+      <!-- maxlength failed; .errors.maxlength has { requiredLength, actualLength } -->
+      @if(reactiveForm.controls['email'].errors?.['maxlength']){
+      <small class="text-danger"
+        >The maximum length should not exceed 15 characters.</small
+      >
+      }
+      <!-- email format failed (built-in email validator) -->
+      @if(reactiveForm.controls['email'].errors?.['email']){
+      <small class="text-danger">Please enter a valid email address.</small>
+      } }
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="form-group m-2">
+      <label>Password</label>
+
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Enter password"
+        formControlName="password"
+      />
+      <!-- RELATION: TS control is password: ['', [Validators.required]] -->
+
+      <!-- Show PASSWORD errors after interaction -->
+      @if((reactiveForm.controls['password'].dirty ||
+      reactiveForm.controls['password'].touched)){
+      @if(reactiveForm.controls['password'].errors?.['required']){
+      <small class="text-danger">Password is required.</small>
+      } }
+    </div>
+
+    <!-- CHECKBOX (DISABLED in TS -->
+    <div class="form-check m-2">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        formControlName="isChecked"
+      />
+      <!-- RELATION: TS control is 'isChecked' and is disabled via .disable() in constructor.
+           NOTE: Disabled controls are excluded from this.reactiveForm.value by default. -->
+      <label>Check me out</label>
+    </div>
+
+    <!-- SKILLS (FORM ARRAY) -->
+    <div class="form-group m-2" formArrayName="skills">
+      <!-- IMPORTANT: Inside a form, <button> defaults to type="submit".
+           We set type="button" to prevent accidental form submit when adding/removing skills. -->
+      <button class="btn btn-primary" type="button" (click)="addSkill()">
+        Add skill
+      </button>
+      <!-- RELATION: TS has skills: this.fb.array([]) and methods addSkill(), deleteSkill(i) -->
+
+      <!-- *ngFor iterates over FormArray controls; [formGroupName]="i" binds each row to its child group -->
+      <div *ngFor="let skill of skills.controls; let i = index">
+        <div [formGroupName]="i">
+          {{ i + 1 }} Skill name :
+          <input type="text" formControlName="skill" />
+          <!-- RELATION: Each item is created by newSkill(): this.fb.group({ skill: '' }) -->
+          <button type="button" (click)="deleteSkill(i)">Delete</button>
         </div>
+      </div>
+    </div>
 
-        <div class="form-group m-2">
-            <label>Last Name</label>
-            <input type="text" class="form-control" placeholder="Enter last name" formControlName="lastName">
+    <!-- ADDRESS (NESTED FORM GROUP)-->
+    <div class="m-2" formGroupName="address">
+      <!-- RELATION: TS creates address: this.fb.group({ city: [''], street: [''], pincode: [''] }) -->
+      <h5 class="m-2">Address</h5>
 
+      <div class="form-group m-2">
+        <label>City</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter city name"
+          formControlName="city"
+        />
+        <!-- RELATION: address.controls['city'] -->
+      </div>
 
-        </div>
-        <div class="form-group m-2">
-            <label>Email</label>
-            <input type="email" class="form-control" placeholder="Enter email address" formControlName="email">
+      <div class="form-group m-2">
+        <label>Street</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter street name"
+          formControlName="street"
+        />
+        <!-- RELATION: address.controls['street'] -->
+      </div>
 
-        </div>
-        <div class="form-group m-2">
-            <label>Password</label>
-            <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
-        </div>
-        <div class="form-check m-2">
-            <input type="checkbox" class="form-check-input" formControlName="isChecked">
-            <label>Check me out</label>
-        </div>
+      <div class="form-group m-2">
+        <label>Pincode</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter pincode"
+          formControlName="pincode"
+        />
+        <!-- RELATION: address.controls['pincode'] -->
+      </div>
+    </div>
 
-        <div class="m-2" formGroupName="address">
-            <h5 class="m-2">Address</h5>
-            <div class="form-group m-2">
-                <label>City</label>
-                <input type="text" class="form-control" placeholder="Enter city name" formControlName="city">
-            </div>
-            <div class="form-group m-2">
-                <label>Street</label>
-                <input type="text" class="form-control" placeholder="Enter street name" formControlName="street">
-            </div>
-            <div class="form-group m-2">
-                <label>Pincode</label>
-                <input type="text" class="form-control" placeholder="Enter Pincode" formControlName="pincode">
-            </div>
-        </div>
-        <button class="btn btn-success m-2" type="submit" [disabled]="reactiveForm.invalid">Submit</button>
+    <!-- Submit is a real submit; others are buttons to avoid accidental submit -->
+    <button
+      class="btn btn-success m-2"
+      type="submit"
+      [disabled]="reactiveForm.invalid"
+    >
+      Submit
+    </button>
 
-        <button class="btn btn-warning m-2" (click)="setAllValues()">Set All Values</button>
-        <button class="btn btn-primary m-2" (click)="setPartialValues()">Set Partial Values</button>
-        <button class="btn btn-danger m-2" (click)="resetForm()">Reset</button>
-    </form>
+    <button class="btn btn-warning m-2" type="button" (click)="setAllValues()">
+      Set All Values
+    </button>
+    <button
+      class="btn btn-primary m-2"
+      type="button"
+      (click)="setPartialValues()"
+    >
+      Set Partial Values
+    </button>
+    <button class="btn btn-secondary m-2" type="button" (click)="resetForm()">
+      Reset
+    </button>
+  </form>
 </div>
