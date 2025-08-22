@@ -7,6 +7,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BuiltInPipesComponent } from './built-in-pipes/built-in-pipes.component';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 export const routes: Routes = [
     // {path : '', component : UserComponent},
@@ -17,6 +19,7 @@ export const routes: Routes = [
 // is matched before redirecting, instead of partially matching.
 
     {path : 'user', component : UserComponent},
+    {path : 'profile', component : ProfileComponent},
     {path : 'data-binding', component : DataBindingComponent},
     {path : 'structural-directive', component : StructuralDirectivesNgifVsIfComponent},
     {path : 'attribute-directive', component : AttributeDirectivesComponent},

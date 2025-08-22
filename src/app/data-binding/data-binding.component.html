@@ -1,15 +1,29 @@
 <div align="center">
-  <h4>One Way Data Binding</h4>
-  <div>
+  <!-- Example 2: Using shared business logic
+       Both components can reuse isEligible without
+       rewriting the check logic inside each component.
+  -->
+  @if(isEligible){
+       <h4 class="text-success">You are eligible for a premium subscription</h4>
+  }@else {
+       <h4 class="text-danger">You are not eligible for a premium subscription</h4>
+  }
+
+  <!-- Example 1: Reusing shared data
+       The same dummyData is shown here just like in ProfileComponent.
+       Because both pull from the same service, they stay consistent.
+  -->
+  <h2>User Name : {{dummyData.name}}</h2>
+  <!-- <div>
     <p>1. Interpolation</p>
     <p><b>{{ topic }}</b> from {{ name }}</p>
-  </div>
-  <div>
+  </div> -->
+  <!-- <div>
     <p>2. Property Binding</p>
     <input type="text" name="" id="" [value]="topic">
-    <div style="height: 160px; width: 250px; border: 1px solid black;">
+    <div style="height: 160px; width: 250px; border: 1px solid black;"> -->
       <!-- syntax of property binding -->
-      <img [src]="image" alt="image logo">
+      <!-- <img [src]="image" alt="image logo">
     </div>
   </div>
   <div>
@@ -27,5 +41,5 @@
   <div>
     <input type="text" [(ngModel)]="topic">
     {{topic}}
-  </div>
+  </div> -->
 </div>

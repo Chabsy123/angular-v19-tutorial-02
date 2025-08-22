@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PurePipe implements PipeTransform {
 
   transform(value: any): any {
-    return null;
+    return value * value;
   }
 
 }

@@ -13,7 +13,7 @@ import { ImpurePipe } from '../impure.pipe';
   styleUrl: './built-in-pipes.component.scss'
 })
 export class BuiltInPipesComponent {
-  mobileNumber: any = null;
+  mobileNumber: any = 939393;
     angularPipes : string = "Angular pipes are used to transform data in Angular templates.";
 
  personData = {

@@ -29,14 +29,17 @@
            We typically show errors only after user has interacted: (dirty || touched). -->
 
       <!-- Show FIRSTNAME errors only after interaction (dirty or touched) -->
-      @if((reactiveForm.controls['firstname'].dirty ||
-      reactiveForm.controls['firstname'].touched)){
+        <!-- ?. means “only check this property if the thing before it actually exists.”-->
+
+      <!-- Even though TypeScript says “it will always exist,” in practice it can save you from runtime crashes during those edge cases. -->
+      @if((reactiveForm.controls['firstname']?.dirty ||
+      reactiveForm.controls['firstname']?.touched)){
       <!-- .errors?.['required'] means the required validator failed -->
-      @if(reactiveForm.controls['firstname'].errors?.['required']){
+      @if(reactiveForm.controls['firstname']?.errors?.['required']){
       <small class="text-danger">Firstname is required.</small>
       }
       <!-- .errors?.['pattern'] means the Regex validator failed (only letters allowed) -->
-      @if(reactiveForm.controls['firstname'].errors?.['pattern']){
+      @if(reactiveForm.controls['firstname']?.errors?.['pattern']){
       <small class="text-danger"
         >Firstname does not match the required pattern (letters only).</small
       >
@@ -57,14 +60,17 @@
       <!-- RELATION: TS control is lastname: ['', [Validators.required, Validators.minLength(10)]] -->
 
       <!-- Show LASTNAME errors after user interacts (dirty or touched) -->
-      @if((reactiveForm.controls['lastname'].dirty ||
-      reactiveForm.controls['lastname'].touched)){
+        <!-- ?. means “only check this property if the thing before it actually exists.”-->
+
+      <!-- Even though TypeScript says “it will always exist,” in practice it can save you from runtime crashes during those edge cases. -->
+      @if((reactiveForm.controls['lastname']?.dirty ||
+      reactiveForm.controls['lastname']?.touched)){
       <!-- required validator failed -->
-      @if(reactiveForm.controls['lastname'].errors?.['required']){
+      @if(reactiveForm.controls['lastname']?.errors?.['required']){
       <small class="text-danger">Lastname is required.</small>
       }
       <!-- minlength validator failed; .errors.minlength has { requiredLength, actualLength } -->
-      @if(reactiveForm.controls['lastname'].errors?.['minlength']){
+      @if(reactiveForm.controls['lastname']?.errors?.['minlength']){
       <small class="text-danger">
         The minimum length of the lastname should be 10.
       </small>
@@ -85,20 +91,23 @@
       <!-- RELATION: TS control is email: ['', [Validators.required, Validators.maxLength(15), Validators.email]] -->
 
       <!-- Show EMAIL errors after interaction -->
-      @if((reactiveForm.controls['email'].dirty ||
-      reactiveForm.controls['email'].touched)){
+        <!-- ?. means “only check this property if the thing before it actually exists.”-->
+
+      <!-- Even though TypeScript says “it will always exist,” in practice it can save you from runtime crashes during those edge cases. -->
+      @if((reactiveForm.controls['email']?.dirty ||
+      reactiveForm.controls['email']?.touched)){
       <!-- required failed -->
-      @if(reactiveForm.controls['email'].errors?.['required']){
+      @if(reactiveForm.controls['email']?.errors?.['required']){
       <small class="text-danger">Email is required.</small>
       }
       <!-- maxlength failed; .errors.maxlength has { requiredLength, actualLength } -->
-      @if(reactiveForm.controls['email'].errors?.['maxlength']){
+      @if(reactiveForm.controls['email']?.errors?.['maxlength']){
       <small class="text-danger"
         >The maximum length should not exceed 15 characters.</small
       >
       }
       <!-- email format failed (built-in email validator) -->
-      @if(reactiveForm.controls['email'].errors?.['email']){
+      @if(reactiveForm.controls['email']?.errors?.['email']){
       <small class="text-danger">Please enter a valid email address.</small>
       } }
     </div>
@@ -116,9 +125,12 @@
       <!-- RELATION: TS control is password: ['', [Validators.required]] -->
 
       <!-- Show PASSWORD errors after interaction -->
-      @if((reactiveForm.controls['password'].dirty ||
-      reactiveForm.controls['password'].touched)){
-      @if(reactiveForm.controls['password'].errors?.['required']){
+      <!-- ?. means “only check this property if the thing before it actually exists.”-->
+
+      <!-- Even though TypeScript says “it will always exist,” in practice it can save you from runtime crashes during those edge cases. -->
+      @if((reactiveForm.controls['password']?.dirty ||
+      reactiveForm.controls['password']?.touched)){
+      @if(reactiveForm.controls['password']?.errors?.['required']){
       <small class="text-danger">Password is required.</small>
       } }
     </div>

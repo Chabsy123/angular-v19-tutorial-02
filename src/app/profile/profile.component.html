@@ -1,0 +1,42 @@
+<div class="m-3">
+    <!-- Example 1: Sharing Data
+         Instead of storing user data directly in the component,
+         we pull it from the SharedDataService (dummyData).
+         This is commented out here but shows how services can
+         provide shared info to multiple components.
+    -->
+    <!--
+    <ul>
+        <li>Id : {{dummyData.id}}</li>
+        <li>Name : {{dummyData.name}}</li>
+        <li>Username : {{dummyData.username}}</li>
+        <li>Email : {{dummyData.email}}</li>
+    </ul>
+    -->
+
+    <!-- Example 2: Sharing Business Logic
+         The logic for checking if the user is eligible is
+         written once inside the SharedDataService.
+         Here we simply call that logic (isEligible) in the template.
+    -->
+    <!--
+    @if(isEligible){
+        <h4 class="text-success">You are eligible for a premium subscription</h4>
+    }@else {
+        <h4 class="text-danger">You are not eligible for a premium subscription</h4>
+    }
+    -->
+
+    <!-- Example 3: Interacting with an API
+         We are looping through apiData which comes from a
+         real backend (via HttpClient in the service).
+         Instead of putting API calls in the component, the
+         service handles the API call and passes the data.
+    -->
+    <ul *ngFor="let data of apiData">
+        <li>Id : {{data.id}}</li>
+        <li>Name : {{data.name}}</li>
+        <li>Username : {{data.username}}</li>
+        <li>Email : {{data.email}}</li>
+    </ul>
+</div>

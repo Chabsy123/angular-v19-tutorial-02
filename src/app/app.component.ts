@@ -24,7 +24,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     // StructuralDirectiveNgswitchVsSwitchComponent,
     // AttributeDirectivesComponent,
     // SignalsComponent,
-    LinkedSignalComponent
+    // LinkedSignalComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
