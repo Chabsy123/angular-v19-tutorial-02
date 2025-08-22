@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-reusable',
@@ -9,4 +9,9 @@ import { Component, Input } from '@angular/core';
 export class ReusableComponent {
 
   @Input() childProperty : string = "Reusable : This is a reusable component.";
+  
+  @HostListener('click')
+  onClick(){
+    console.log("Button clicked");
+  }
 }

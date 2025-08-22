@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CrudService } from '../Services/crud.service';
 import { Iuser } from '../iuser';
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,7 @@ export class CRUDComponent implements OnInit {
 
   apiData: Iuser[] = []; // holds all users from db.json
 
-  constructor(private crud: CrudService, private router: Router) { }
+  constructor( @Inject(CrudService) private crud: CrudService, private router: Router) { }
 
   ngOnInit(): void {
     // Load data when component starts
