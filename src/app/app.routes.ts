@@ -8,6 +8,10 @@ import { BuiltInPipesComponent } from './built-in-pipes/built-in-pipes.component
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CRUDComponent } from './crud/crud.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ViewUserComponent } from './view-user/view-user.component';
 
 
 export const routes: Routes = [
@@ -26,5 +30,9 @@ export const routes: Routes = [
     {path : 'built-in-pipes', component : BuiltInPipesComponent},
     {path : 'tdf', component : TemplateDrivenFormComponent},
     {path : 'rf', component : ReactiveFormComponent},
+    {path : 'crud', component : CRUDComponent},
+    {path : 'adduser', component : AddUserComponent},
+    {path : 'updateuser/:id', component : UpdateUserComponent},
+    {path : 'viewuser', component : ViewUserComponent},
     {path : '**', component : PageNotFoundComponent},
 ];

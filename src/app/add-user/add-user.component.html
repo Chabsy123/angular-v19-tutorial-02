@@ -1,0 +1,31 @@
+<div class="container">
+    <form class=" w-75 p-5 mx-auto bg-info" [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+        <!-- This form is linked to a reactive form object 'addUserForm' -->
+        <h2 class="text-center m-4">Add-User</h2>
+
+        <!-- Input fields bound to form controls -->
+        <div class="form-group m-3">
+           <label class="form-label">Name :</label>
+           <input type="text" class="form-control" placeholder="Enter name" formControlName="name">
+        </div>
+        <div class="form-group m-3">
+           <label class="form-label">Username :</label>
+           <input type="text" class="form-control" placeholder="Enter Username" formControlName="username">
+        </div>
+        <div class="form-group m-3">
+           <label class="form-label">Email :</label>
+           <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
+        </div>
+
+        <!-- Buttons: submit calls onSubmit, cancel navigates away -->
+        <div class="text-center m-3">
+            <button class="btn btn-success btn-lg m-1" type="submit">Add</button>
+            <button class="btn btn-danger btn-lg m-1" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</div>
+<!-- Form collects new user data.
+
+Connected to addUserForm defined in .ts.
+
+Submits data to JSON server via service. -->
