@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedDataService } from '../shared-data.service';
+import { SharedDataService } from '../Services/shared-data.service';
 import { get } from 'http';
 import { CommonModule } from '@angular/common';
 

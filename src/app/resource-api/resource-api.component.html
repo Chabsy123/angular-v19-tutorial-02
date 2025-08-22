@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 class="center m-4">Angular 19 : resource() & rxResource API</h2>
+    <table class="table table-info table-striped">
+        <thead>
+            <!-- Table headers -->
+            <tr>
+                <th class="col-2">User_ID</th>
+                <th class="col-2">Username</th>
+                <th class="col-2">Email</th>
+                <th class="col-2">Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through users from apiData -->
+            <tr *ngFor="let data of apiData.value()">
+              <!-- the value method will let us access the data from the resource and RX resource-->
+                <td>{{data.user_id}}</td>
+                <td>{{data.username}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.password}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

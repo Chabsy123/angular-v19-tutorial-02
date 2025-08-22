@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { CrudService } from '../crud.service';
+import { CrudService } from '../Services/crud.service';
 import { Iuser } from '../iuser';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ReusableComponent } from '../reusable/reusable.component';
 
 @Component({
   selector: 'app-crud',
-  imports: [CommonModule],
+  imports: [CommonModule, ReusableComponent],
   templateUrl: './crud.component.html',
   styleUrl: './crud.component.scss'
 })
 export class CRUDComponent implements OnInit {
+
+  parentProperty : string = "CRUD : This is the main hub for all users.";
 
   apiData: Iuser[] = []; // holds all users from db.json
 

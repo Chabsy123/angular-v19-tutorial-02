@@ -1,5 +1,7 @@
-<div class="container">
-    <div class="w-50 p-5 mt-5 mx-auto bg-secondary text-white">
+<div class="container w-50">
+    <app-reusable [childProperty]="parentProperty"></app-reusable>
+
+    <div class=" p-5 mt-5 mx-auto bg-secondary text-white">
         <h2 class="text-center m-4">View-User</h2>
         <div>
             <p>Name : <b class="text-info">{{userData?.name}}</b></p>
