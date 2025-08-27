@@ -1,0 +1,101 @@
+<div class="container text-center">
+
+    <!-- Example 1 & 2: Parent <-> Child communication -->
+    <div class="row m-3">
+        <div class="col-12">
+            <div class="text-warning">
+                <h2>Example of 1 & 2 (Parent -> Child & Child -> Parent)</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Parent section -->
+        <div class="col-6">
+            <div class="text-info">
+                <h2>Parent Component</h2>
+            </div>
+            <!-- Displays data received from Child -->
+            <div class="text-warning m-3">
+                <h4>{{receiveMessage}}</h4>
+            </div>
+        </div>
+
+        <div class="vr p-0"></div>
+
+        <!-- Child section -->
+        <!-- 
+            - [childInputProperty]="parentProperty" 
+              Passes data (parentProperty) from Parent -> Child.
+            
+            - (childOutputProperty)="receiveData($event)" 
+              Listens for events from Child -> calls parent's receiveData() method.
+        -->
+        <div class="col-5">
+            <app-child 
+                [childInputProperty]="parentProperty" 
+                (childOutputProperty)="receiveData($event)">
+            </app-child>
+        </div>
+    </div>
+
+    <!-- Example 3: Sibling <-> Sibling communication via Parent -->
+    <div class="row m-3">
+        <div class="col-12">
+            <div class="text-warning">
+                <h2>Example of 3 (Sibling Components)</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Sibling1 Component -->
+        <!--
+            (sibling1Event)="receiveEvent1($event)" 
+              - When Sibling1 sends data, Parent catches it with receiveEvent1().
+            
+            [sibling1Property]="sibling2Data" 
+              - Passes data received from Sibling2 (via Parent) into Sibling1.
+        -->
+        <div class="col-6">
+            <app-sibling1 
+                (sibling1Event)="receiveEvent1($event)" 
+                [sibling1Property]="sibling2Data">
+            </app-sibling1>
+        </div>
+
+        <div class="vr p-0"></div>
+
+        <!-- Sibling2 Component -->
+        <!--
+            [sibling2Property]="sibling1Data" 
+              - Passes data received from Sibling1 (via Parent) into Sibling2.
+            
+            (Sibling2Event)="receiveEvent2($event)" 
+              - When Sibling2 sends data, Parent catches it with receiveEvent2().
+        -->
+        <div class="col-5">
+            <app-sibling2 
+                [sibling2Property]="sibling1Data" 
+                (Sibling2Event)="receiveEvent2($event)">
+            </app-sibling2>
+        </div>
+    </div>
+
+    <!-- Example 4: Parent -> Child using @ViewChild -->
+    <div class="row m-3">
+        <div class="col-12">
+            <div class="text-warning">
+                <h2>Example of 4 (Parent -> Child using ViewChild)</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-3">
+        <div class="col-12">
+            <!-- Template reference variable #reusable lets Parent use @ViewChild -->
+            <app-reusable #reusable></app-reusable>
+        </div>
+    </div>
+
+</div>

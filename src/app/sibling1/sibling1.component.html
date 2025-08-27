@@ -1,0 +1,18 @@
+<div class="container text-center">
+    <div class="text-info">
+        <h2>Sibling1 Component</h2>
+    </div>
+
+    <!-- Displays data received from Sibling2 via Parent -->
+    <div class="text-warning m-3">
+        <h4>{{sibling1Property}}</h4>
+    </div>
+
+    <!-- Input + Button to send data up to Parent -->
+    <div class="m-3">
+        <input type="text" #sibling1>
+        <button class="btn btn-success btn-sm m-3" (click)="onSubmit(sibling1.value)">
+            Submit
+        </button>
+    </div>
+</div>

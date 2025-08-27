@@ -1,0 +1,17 @@
+<div class="container text-center">
+  <div class="text-info">
+    <h2>Child Component</h2>
+  </div>
+
+  <!-- Displays data from Parent via [childInputProperty] -->
+  <div class="text-warning m-3">
+    <h4>{{ childInputProperty }}</h4>
+  </div>
+
+  <!-- Button that triggers sendData(), which emits data back to Parent -->
+  <div class="m-3">
+    <button class="btn btn-success btn-sm m-3" (click)="sendData()">
+       Send Data
+    </button>
+  </div>
+</div>

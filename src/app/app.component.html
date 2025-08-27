@@ -48,32 +48,43 @@
             class="nav-link"
             routerLinkActive="active"
             routerLink="/data-binding"
-            >Data-Binding</a>
+            >Data-Binding</a
+          >
         </li>
 
         <!--
           Navigation item with property binding syntax for routerLink
           - [routerLink]: Alternate syntax that accepts string route
         -->
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Directives
           </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-         <li> <a
-            class="dropdown-item"
-            routerLinkActive="active"
-            routerLink="/structural-directive"
-            >Structural-Directive</a
-          ></li>
-          <li><a
-            class="dropdown-item"
-            routerLinkActive="active"
-            routerLink="/attribute-directives"
-            >Attribute-Directive</a
-          ></li>
-        </ul>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a
+                class="dropdown-item"
+                routerLinkActive="active"
+                routerLink="/structural-directive"
+                >Structural-Directive</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLinkActive="active"
+                routerLink="/attribute-directives"
+                >Attribute-Directive</a
+              >
+            </li>
+          </ul>
         </li>
 
         <!--
@@ -91,14 +102,34 @@
           >
         </li>
 
-       <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Forms
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" routerLinkActive="active" routerLink="/tdf">TDF</a></li>
-            <li><a class="dropdown-item" routerLinkActive="active" routerLink="/rf">Reactive Form</a></li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLinkActive="active"
+                routerLink="/tdf"
+                >TDF</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                routerLinkActive="active"
+                routerLink="/rf"
+                >Reactive Form</a
+              >
+            </li>
           </ul>
         </li>
 
@@ -108,13 +139,27 @@
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['resourceapi']"
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLink]="['resourceapi']"
             >Resource API</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['reusable']"
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLink]="['reusable']"
             >Reusable</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLinkActive="active"
+            [routerLink]="['parent']"
+            >Parent</a
           >
         </li>
       </ul>

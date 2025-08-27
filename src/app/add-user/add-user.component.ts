@@ -12,16 +12,16 @@ import { ReusableComponent } from '../reusable/reusable.component';
   styleUrl: './add-user.component.scss'
 })
 export class AddUserComponent {
-parentProperty : string = "Add-User : This is the Add User page.";
+  parentProperty: string = "Add-User : This is the Add User page.";
 
-  addUserForm : FormGroup; // reactive form object
+  addUserForm: FormGroup; // reactive form object
 
-  constructor(private router: Router, private fb : FormBuilder, private CRUD : CrudService) {
+  constructor(private router: Router, private fb: FormBuilder, private CRUD: CrudService) {
     // Build the form with empty fields
     this.addUserForm = this.fb.group({
-       name :[''],
-       username :[''],
-       email :[''],
+      name: [''],
+      username: [''],
+      email: [''],
     });
   }
 
@@ -33,7 +33,7 @@ parentProperty : string = "Add-User : This is the Add User page.";
     this.CRUD.postData(this.addUserForm.value).subscribe(res => {
       // After saving, navigate back to main CRUD page
       this.router.navigateByUrl('crud');
-    })
+    }) 
   }
 
   onCancel() {
