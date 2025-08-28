@@ -1,0 +1,86 @@
+<div class="container text-center">
+  <!-- Title for session storage section -->
+  <h4 class="text-info">Session Storage</h4>
+
+  <!-- Row with 4 buttons for session storage actions -->
+  <div class="row m-4">
+    <!-- Button: stores values in sessionStorage -->
+    <div class="col-3">
+      <button class="btn btn-info" (click)="setSession()">Set Session</button>
+    </div>
+
+    <!-- Button: retrieves value from sessionStorage -->
+    <div class="col-3">
+      <button class="btn btn-info" (click)="getSession()">Get Session</button>
+    </div>
+
+    <!-- Button: removes only "pass" from sessionStorage -->
+    <div class="col-3">
+      <button class="btn btn-info" (click)="removeSession()">Remove Session</button>
+    </div>
+
+    <!-- Button: clears all sessionStorage values -->
+    <div class="col-3">
+      <button class="btn btn-info" (click)="clearSession()">Clear Session</button>
+    </div>
+  </div>
+
+  <!-- Display sessionValue if it exists -->
+  @if(sessionValue){
+    <h6>Session Value : {{ sessionValue }}</h6>
+  }
+
+  <hr />
+
+  <!-- Title for local storage section -->
+  <h4 class="text-success">Local Storage</h4>
+
+  <!-- Row with 4 buttons for localStorage actions -->
+  <div class="row m-4">
+    <div class="col-3">
+      <button class="btn btn-success" (click)="setLocal()">Set Local</button>
+    </div>
+
+    <div class="col-3">
+      <button class="btn btn-success" (click)="getLocal()">Get Local</button>
+    </div>
+
+    <div class="col-3">
+      <button class="btn btn-success" (click)="removeLocal()">Remove Local</button>
+    </div>
+
+    <div class="col-3">
+      <button class="btn btn-success" (click)="clearLocal()">Clear Local</button>
+    </div>
+  </div>
+
+  <!-- Display localValue if it exists -->
+  @if(localValue){
+    <h6>Local Value : {{localValue}}</h6>
+  }
+
+  <hr>
+
+  <!-- Title for cookie section -->
+  <h4 class="text-warning">Cookies</h4>
+
+  <!-- Row with 3 buttons for cookie actions -->
+  <div class="row m-4">
+    <div class="col-3">
+      <button class="btn btn-warning" (click)="setCookie()">Set Cookie</button>
+    </div>
+
+    <div class="col-3">
+      <button class="btn btn-warning" (click)="getCookie()">Get Cookie</button>
+    </div>
+
+    <div class="col-3">
+      <button class="btn btn-warning" (click)="deleteCookie()">Delete Cookie</button>
+    </div>
+  </div>
+
+  <!-- Display cookieValue if it exists -->
+  @if(cookieValue){
+    <h6>Cookie Value : {{cookieValue}}</h6>
+  }
+</div>
